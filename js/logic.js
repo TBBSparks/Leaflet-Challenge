@@ -159,7 +159,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
     function(platedata) {
  
       L.geoJson(platedata, {
-        color: "pink",
+        color: "royalblue",
         weight: 3
       })
       .addTo(Plates);
