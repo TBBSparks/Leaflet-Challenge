@@ -12,11 +12,6 @@ var Sat_Map = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/satellite-str
 var Dark_Map = L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/256/{z}/{x}/{y}?" +
 "access_token=pk.eyJ1IjoiYnNwYXJrczExIiwiYSI6ImNrZTRsdjEyZTAyamIyc29hM2ZnZG8yMW4ifQ.OjmXCqmeX3aq15wvXRb6Tg");
 
-//---------------------------------------------------------------------
-//var context = canvas.getContext(contextType);
-
-
-//---------------------------------------------------------------------------------------
 
 //Mapbox tutorials on their site helped me with restricting panning
 //This keeps the user within the map where the data is actually plotted
@@ -132,8 +127,9 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
     var div = L
       .DomUtil
       .create("div", "info legend");
-
+      //labels = ['<strong> Magnitude </strong>']; attempting but not working
     var grades = [0, 1, 2, 3, 4, 5];
+    
     var colors = [
       "#E5211B",
       "#F2A727",
@@ -148,6 +144,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
       div.innerHTML += "<i style='background: " + colors[i] + "'></i> " +
         grades[i] + (grades[i + 1] ? "&ndash;" + grades[i + 1] + "<br>" : "+");
     }
+
     return div;
   };
 
@@ -159,12 +156,31 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
     function(platedata) {
  
       L.geoJson(platedata, {
-        color: "royalblue",
+        color: "black",
         weight: 3
       })
       .addTo(Plates);
 
      
       Plates.addTo(map);
+
+      //found this piece of code to place text on map https://stackoverflow.com/questions/33767463/overlaying-a-text-box-on-a-leaflet-js-map
+      L.Control.textbox = L.Control.extend({
+        onAdd: function(map) {
+          
+        var text = L.DomUtil.create('div');
+        text.id = "info_text";
+        text.innerHTML = "<strong>text here</strong>"
+        return text;
+        },
+    
+        onRemove: function(map) {
+          
+        }
+      });
+      L.control.textbox = function(opts) { return new L.Control.textbox(opts);}
+      L.control.textbox({ position: 'bottomleft' }).addTo(map);
+
+
     });
 });
