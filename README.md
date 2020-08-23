@@ -1,6 +1,7 @@
 # Leaflet-Challenge
 
 ![Leaflet-Challenge](images/earthquake-3167693_1280.jpg)
+image by tumisu pixabay
 
 Using Leaflet to create a visual story using a geoJSON data set from United States Geological Survey, or USGS for short, about earthquakes.  This map reflects the magnitude and location of the earthquake with different sized and colored markers.
 
