@@ -170,7 +170,7 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
           
         var text = L.DomUtil.create('div');
         text.id = "info_text";
-        text.innerHTML = "<strong>text here</strong>"
+        text.innerHTML = "<strong>Tina Sparks - 08/22/20</strong>"
         return text;
         },
     
