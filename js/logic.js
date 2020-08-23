@@ -83,17 +83,17 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
   function getColor(magnitude) {
     switch (true) {
       case magnitude > 5:
-        return "#FF00E6";
+        return "#4E1A49";
       case magnitude > 4:
-        return "#460000";
+        return "#3366A8";
       case magnitude > 3:
-        return "#FF0000";
+        return "#57A962";
       case magnitude > 2:
-        return "#FF9100";
+        return "#E9F545";
       case magnitude > 1:
-        return "#FFFF00";
+        return "#F2A727";
       default:
-        return "#11FF00";
+        return "#E5211B";
     }
   }
 
@@ -135,12 +135,12 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geo
 
     var grades = [0, 1, 2, 3, 4, 5];
     var colors = [
-      "#11FF00",
-      "#FFFF00",
-      "#FF9100",
-      "#FF0000",
-      "#460000",
-      "#FF00E6"
+      "#E5211B",
+      "#F2A727",
+      "#E9F545",
+      "#57A962",
+      "#3366A8",
+      "#4E1A49"
     ];
 
 
