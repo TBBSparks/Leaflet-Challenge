@@ -9,25 +9,44 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
 
-  <!-- Our CSS -->
+  <!-- CSS for style including header and shaking ability -->
+  <!-- Visited this wonderful page for this shaking css https://elrumordelaluz.github.io/csshake/-->
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/csshake.css">
 </head>
 <body>
+  
+    <div class="header" id="myHeader">
+      <h2>USGS Data For Earthquake Intensity</h2>
+      <div class="shake-slow">
+        <h3><a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">Visit USGS data</a></h3>
+      </div>
+    </div>
+  
 
-  <!-- Went and did some reading on placing a title etc to the map -->
-  <!-- I'm not satisfied with the outcome so far so I'll keep researching better ways for this to be done -->
-  <!-- https://github.com/Igor-Vladyka/leaflet.browser.print/blob/master/index.html -->
-  <h1 class="title" leaflet-browser-print-content>USGS Data For Earthquake Intensity</h1>
-  <h3 class="sub-content" leaflet-browser-print-content>http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php</h3>
+  <!-- Put in the map -->
+  <div id="MAPOBJ">
+  </div>
 
-  <!-- The div that holds our map -->
-  <div id="MAPOBJ"></div>
+  <!-- found a good tutorial on sticky head here https://www.w3schools.com/howto/howto_js_sticky_header.asp-->
+  <script>
+    window.onscroll = function() {myFunction()};
+    
+    var header = document.getElementById("myHeader");
+    var sticky = header.offsetTop;
+    
+    function myFunction() {
+      if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+      } else {
+        header.classList.remove("sticky");
+      }
+    }
+    </script>
 
-  <!-- Leaflet JavaScript -->
+  
   <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
-  <!-- D3 JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
-  <!-- Our JavaScript -->
   <script type="text/javascript" src="js/logic.js"></script>
 </body>
 </html>
